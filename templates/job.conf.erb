@@ -1,0 +1,13 @@
+# <%= title %>
+
+description	"<%= description %>"
+
+start on runlevel [35]
+stop on runlevel [016]
+
+# daemon or not?
+<% if fork %>expect fork<% end %>
+respawn
+
+<% if has_variable?("exec") then %>exec <%= exec %>
+<% elsif has_variable?("script") then %>script <%= script %><% end %>
